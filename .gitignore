@@ -1,0 +1,58 @@
+# Dependencias
+node_modules/
+.pnpm-store/
+
+# Builds y artefactos
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.vite/
+.turbo/
+
+# Entornos y secretos
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+supabase/.env
+.branches/
+.temp/
+
+# Editores y sistemas operativos
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+
+# Testing
+playwright-report/
+test-results/
+.vercel/
+
+# Archivos temporales de la aplicación
+tmp/
+upload-tmp/
+
+.opencode
+
+database/
+
+docs/

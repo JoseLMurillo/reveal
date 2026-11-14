@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: rollo-api
+    runtime: node
+    plan: free
+    region: virginia
+    autoDeploy: true
+    buildCommand: npm ci && npm run build -w @rollo/shared && npm run build -w @rollo/backend
+    startCommand: node backend/dist/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: TRUST_PROXY
+        value: 1
+      - key: LOG_LEVEL
+        value: info
+      - key: SUPABASE_STORAGE_BUCKET
+        value: rollo-originals
+      - key: ADMIN_SESSION_TTL_SECONDS
+        value: 43200
+      - key: ADMIN_SESSION_IDLE_SECONDS
+        value: 3600
+      - key: PARTICIPANT_SESSION_TTL_SECONDS
+        value: 2592000
+      - key: UPLOAD_SESSION_TTL_SECONDS
+        value: 900
+      - key: MAX_FILES_PER_UPLOAD
+        value: 10
+      - key: SIGNED_URL_TTL_SECONDS
+        value: 3600
+      - key: CLEANUP_INTERVAL_SECONDS
+        value: 300
+      - key: FRONTEND_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false

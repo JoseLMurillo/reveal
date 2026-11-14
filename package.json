@@ -1,0 +1,47 @@
+{
+  "name": "rollo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Rollo — álbum fotográfico colectivo inspirado en las cámaras de rollo.",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "predev": "npm run build -w @rollo/shared",
+    "dev": "concurrently -n shared,api,web -c magenta,yellow,cyan \"npm run dev -w @rollo/shared\" \"npm run dev -w @rollo/backend\" \"npm run dev -w @rollo/frontend\"",
+    "build": "npm run build -w @rollo/shared && npm run build -w @rollo/backend && npm run build -w @rollo/frontend",
+    "pretypecheck": "npm run build -w @rollo/shared",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test --workspaces --if-present && npm run db:verify",
+    "db:verify": "tsx database/scripts/verify-migrations.ts",
+    "db:verify:watch": "tsx watch database/scripts/verify-migrations.ts",
+    "admin:create": "npm run admin:create -w @rollo/backend --",
+    "admin:reset-password": "npm run admin:reset-password -w @rollo/backend --",
+    "rls:verify": "npm run rls:verify -w @rollo/backend"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^22.19.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  }
+}
