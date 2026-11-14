@@ -27,7 +27,7 @@
     "rls:verify": "npm run rls:verify -w @rollo/backend"
   },
   "engines": {
-    "node": ">=22.0.0",
+    "node": "22.x",
     "npm": ">=10.0.0"
   },
   "devDependencies": {
